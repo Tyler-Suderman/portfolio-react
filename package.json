@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "font-face-observer": "^1.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "styled-jsx": "^2.2.6"
   },
   "devDependencies": {
