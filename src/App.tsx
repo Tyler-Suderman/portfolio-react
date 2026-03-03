@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import NameBanner from './NameBanner';
 import About from './About';
 import LinkDescription from './LinkDescription';
@@ -19,9 +19,12 @@ function getWideScreen() {
 }
 
 function App() {
-  const [imageList, setImageList] = useState<ImageList>(defaultState.smallImageList);
   const [displayImage, setDisplayImage] = useState<string>(defaultState.smallImageList['trail3mobile']);
   const [wideScreen, setWideScreen] = useState(false);
+  const imageList = useMemo(
+    () => wideScreen ? defaultState.largeImageList : defaultState.smallImageList,
+    [wideScreen]
+  );
   const [bannerOpacity, setBannerOpacity] = useState(defaultState.bannerOpacity);
   const [highlightedLink, setHighlightedLink] = useState('');
 
@@ -38,16 +41,12 @@ function App() {
   }, []);
 
   useEffect(() => {
+    setDisplayImage(getRandomImage(imageList));
+  }, [imageList]);
+
+  useEffect(() => {
     document.title = 'TYLER SUDERMAN';
-
-    const wide = getWideScreen();
-    setWideScreen(wide);
-
-    const newImageList = wide
-      ? { ...defaultState.largeImageList }
-      : { ...defaultState.smallImageList };
-    setImageList(newImageList);
-    setDisplayImage(getRandomImage(newImageList));
+    setWideScreen(getWideScreen());
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
