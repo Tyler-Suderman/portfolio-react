@@ -4,16 +4,19 @@
   "private": true,
   "dependencies": {
     "font-face-observer": "^1.0.0",
-    "material-ui": "^0.20.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1",
     "styled-jsx": "^2.2.6"
   },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "prettier": "^3.0.0",
+    "vite": "^5.0.0"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write ."
   }
 }

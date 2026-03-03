@@ -3,6 +3,9 @@ import NameBanner from './NameBanner';
 import About from './About';
 import LinkDescription from './LinkDescription';
 import defaultState from './defaultState';
+import AmikoEot from './fonts/Amiko-Bold.eot?url';
+import AmikoWoff2 from './fonts/Amiko-Bold.woff2?url';
+import AmikoWoff from './fonts/Amiko-Bold.woff?url';
 
 const initialState = () => {
   return {
@@ -43,10 +46,10 @@ class App extends Component {
           @import url('https://fonts.googleapis.com/css?family=Kosugi+Maru');
           @font-face {
               font-family: 'Amiko';
-              src: url(${require('./fonts/Amiko-Bold.eot')});
-              src: url(${require('./fonts/Amiko-Bold.eot?#iefix')}) format('embedded-opentype'),
-                  url(${require('./fonts/Amiko-Bold.woff2')}) format('woff2'),
-                  url(${require('./fonts/Amiko-Bold.woff')}) format('woff');
+              src: url(${AmikoEot});
+              src: url(${AmikoEot}#iefix) format('embedded-opentype'),
+                  url(${AmikoWoff2}) format('woff2'),
+                  url(${AmikoWoff}) format('woff');
               font-weight: bold;
               font-style: normal;
           }
