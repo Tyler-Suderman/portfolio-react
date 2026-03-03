@@ -1,7 +1,12 @@
 import React from 'react';
-import propTypes from 'prop-types';
 
-function LinkDescription({ highlightedLink, image, wideScreen }) {
+interface Props {
+  highlightedLink: string;
+  image: string;
+  wideScreen: boolean;
+}
+
+function LinkDescription({ highlightedLink, image, wideScreen }: Props) {
   return highlightedLink && wideScreen ?
     (<div>
       <style jsx>{`
@@ -56,12 +61,6 @@ function LinkDescription({ highlightedLink, image, wideScreen }) {
         </ul>
       </div>
     </div>) : null;
-}
-
-LinkDescription.propTypes = {
-  highlightedLink: propTypes.string.isRequired,
-  image: propTypes.string.isRequired,
-  wideScreen: propTypes.bool.isRequired
 }
 
 export default LinkDescription;

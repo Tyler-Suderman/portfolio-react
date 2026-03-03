@@ -3,11 +3,21 @@ import NameBanner from './NameBanner';
 import About from './About';
 import LinkDescription from './LinkDescription';
 import defaultState from './defaultState';
+import { ImageList, LinksByKey } from './types';
 import AmikoEot from './fonts/Amiko-Bold.eot?url';
 import AmikoWoff2 from './fonts/Amiko-Bold.woff2?url';
 import AmikoWoff from './fonts/Amiko-Bold.woff?url';
 
-const initialState = () => {
+interface AppState {
+  imageList: ImageList;
+  displayImage: string;
+  wideScreen: boolean;
+  bannerOpacity: number;
+  linksByKey: LinksByKey;
+  highlightedLink: string;
+}
+
+const initialState = (): AppState => {
   return {
     imageList: defaultState.smallImageList,
     displayImage: defaultState.smallImageList['trail3mobile'],
@@ -18,8 +28,8 @@ const initialState = () => {
   }
 }
 
-class App extends Component {
-  constructor(props) {
+class App extends Component<{}, AppState> {
+  constructor(props: {}) {
     super(props);
     this.state = initialState();
     this.highlightLink = this.highlightLink.bind(this);
@@ -96,7 +106,7 @@ class App extends Component {
     );
   }
 
-  highlightLink(link) {
+  highlightLink(link: string) {
     this.setState({highlightedLink: link});
   }
 
@@ -108,21 +118,22 @@ class App extends Component {
     return wideScreen;
   }
 
-
-  setImageState(wideScreen) {
+  setImageState(wideScreen: boolean) {
     const imageList = wideScreen ? Object.assign({}, defaultState.largeImageList) : Object.assign({}, defaultState.smallImageList);
     const displayImage = this.getRandomImage(imageList);
     this.setState({imageList, displayImage});
   }
 
-  getRandomImage(imageList) {
+  getRandomImage(imageList: ImageList) {
     const keys = Object.keys(imageList);
     const randomKey = keys[Math.floor(Math.random() * (Object.keys(imageList).length - 0))];
     return imageList[randomKey];
   }
 
   setBannerOpacity() {
-    const bannerBottom = document.getElementById('banner').getBoundingClientRect().bottom;
+    const banner = document.getElementById('banner');
+    if (!banner) return;
+    const bannerBottom = banner.getBoundingClientRect().bottom;
     const slowDownOpacityChange = (bannerBottom - 100)/ 50;
     if (slowDownOpacityChange < 10) {
       const newBannerOpacity = slowDownOpacityChange / 10;

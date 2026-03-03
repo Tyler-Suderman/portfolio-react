@@ -1,7 +1,12 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import { LinkItem } from './types';
 
-function Link({ highlight, link }) {
+interface Props {
+  link: LinkItem;
+  highlight: (name: string) => void;
+}
+
+function Link({ highlight, link }: Props) {
 
   return (
     <a
@@ -21,11 +26,6 @@ function Link({ highlight, link }) {
 
     </a>
   );
-}
-
-Link.propTypes = {
-  link: propTypes.object.isRequired,
-  highlight: propTypes.func.isRequired
 }
 
 export default Link;

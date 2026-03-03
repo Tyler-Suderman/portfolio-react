@@ -9,14 +9,18 @@
     "styled-jsx": "^2.2.6"
   },
   "devDependencies": {
+    "@types/react": "^16.14.69",
+    "@types/react-dom": "^16.9.25",
     "@vitejs/plugin-react": "^4.0.0",
     "prettier": "^3.0.0",
+    "typescript": "^5.9.3",
     "vite": "^5.0.0"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "typecheck": "tsc"
   }
 }

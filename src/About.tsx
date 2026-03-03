@@ -1,11 +1,16 @@
 import React from 'react';
-import propTypes from 'prop-types';
 import Link from './Link';
+import { LinksByKey } from './types';
 
-function About({ links, highlight }) {
+interface Props {
+  links: LinksByKey;
+  highlight: (name: string) => void;
+}
+
+function About({ links, highlight }: Props) {
 
   // here's a tricky block of code that just makes the link components below... maybe... a little easier to read.
-  const text = {};
+  const text: LinksByKey = {};
   Object.keys(links).forEach((key) => {
     text[links[key].displayText] = links[key];
   });
@@ -61,11 +66,6 @@ function About({ links, highlight }) {
       </div>
     </div>
   );
-}
-
-About.propTypes = {
-  links: propTypes.object.isRequired,
-  highlight: propTypes.func.isRequired
 }
 
 export default About;

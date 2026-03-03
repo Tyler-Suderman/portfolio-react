@@ -1,7 +1,12 @@
 import React from 'react';
-import propTypes from 'prop-types';
 
-function NameBanner({ image, opacity, wideScreen }) {
+interface Props {
+  image: string;
+  opacity: number;
+  wideScreen: boolean;
+}
+
+function NameBanner({ image, opacity, wideScreen }: Props) {
   return (
     <header id="banner" className="banner">
       <style jsx>{`
@@ -37,12 +42,6 @@ function NameBanner({ image, opacity, wideScreen }) {
       <span className="last-name">suderman</span></h1>
     </header>
   );
-}
-
-NameBanner.propTypes = {
-  image: propTypes.string.isRequired,
-  opacity: propTypes.number.isRequired,
-  wideScreen: propTypes.bool.isRequired
 }
 
 export default NameBanner;

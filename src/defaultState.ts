@@ -7,7 +7,16 @@ import trail3mobile from './images/trail3mobile.jpg';
 import trail22mobile from './images/trail22mobile.jpg';
 import trail23mobile from './images/trail23mobile.jpg';
 
-export default {
+import { ImageList, LinksByKey } from './types';
+
+interface DefaultState {
+  largeImageList: ImageList;
+  smallImageList: ImageList;
+  linksByKey: LinksByKey;
+  bannerOpacity: number;
+}
+
+const defaultState: DefaultState = {
   largeImageList: {
     trail3,
     trail10,
@@ -53,4 +62,6 @@ export default {
     }
   },
   bannerOpacity: 1
-}
+};
+
+export default defaultState;
